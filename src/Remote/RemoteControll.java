@@ -1,28 +1,22 @@
 package Remote;
 
 import Command.*;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class RemoteControll {
-    Command command;
-    LinkedList<Command> commands = new LinkedList<>();
-    public RemoteControll() {
+    String lastRef;
+    LinkedHashMap<String,Command> commands = new LinkedHashMap<String,Command>();
 
+    public void ajouterNouvelleCommande(String ref, Command command){
+        commands.put(ref, command);
     }
-
-    public void setCommand(Command command) {
-        this.command = command;
-    }
-
-    public void buttonWasPressed(){
-        command.execute();
-        commands.add(command);
+    public void buttonWasPressed(String ref){
+        if (commands.get(ref)!= null) commands.get(ref).execute();
+        lastRef = ref;
     }
     public void CancelWasPressed(){
-        commands.getLast().cancel();
+        commands.get(lastRef).cancel();
     }
 
 

@@ -14,16 +14,17 @@ public class RemoteTest {
         Command tvOffCmd = new TVOffCommand(tv);
         Command lightOnCmd = new LightOnCommand(light);
         Command lightOffCmd = new LightOffCommand(light);
-        remoteControll.setCommand(tvOnCmd);
-        remoteControll.buttonWasPressed();
+        remoteControll.ajouterNouvelleCommande("tvOn",tvOnCmd);
+        remoteControll.ajouterNouvelleCommande("tvOff",tvOffCmd);
+        remoteControll.ajouterNouvelleCommande("lightOn",lightOnCmd);
+        remoteControll.ajouterNouvelleCommande("lightOff",lightOffCmd);
+        remoteControll.buttonWasPressed("tvOn");
         remoteControll.CancelWasPressed();
-        remoteControll.setCommand(lightOffCmd);
-        remoteControll.buttonWasPressed();
+        remoteControll.buttonWasPressed("tvOff");
         remoteControll.CancelWasPressed();
-        remoteControll.setCommand(lightOnCmd);
-        remoteControll.buttonWasPressed();
+        remoteControll.buttonWasPressed("lightOn");
         remoteControll.CancelWasPressed();
 
-        //test Light
+
     }
 }
